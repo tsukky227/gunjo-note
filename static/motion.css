@@ -1,6 +1,6 @@
 /* Motion layer — original design remains intact. */
 .hero{background:none;--sky-shift:0px}
-.hero::after{content:"";position:absolute;inset:-14px;background:#4f5978 url('rooftop.webp') center 54%/cover no-repeat;z-index:-2;transform:translate3d(0,var(--sky-shift),0) scale(1.035);will-change:transform}
+.hero::after{content:"";position:absolute;inset:-14px;background:#4f5978 url('https://gunjonotestorage.blob.core.windows.net/images/rooftop.webp') center 54%/cover no-repeat;z-index:-2;transform:translate3d(0,var(--sky-shift),0) scale(1.035);will-change:transform}
 .sky-motes{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
 .sky-motes i{position:absolute;left:var(--x);top:var(--y);width:var(--size);height:var(--size);border-radius:50%;background:#ffe0b8;box-shadow:0 0 9px 2px #ffcba45c;opacity:0;animation:sky-drift var(--duration) var(--delay) infinite ease-in-out}
 .hero-inner{z-index:1}
