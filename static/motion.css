@@ -1,0 +1,31 @@
+/* Motion layer — original design remains intact. */
+.hero{background:none;--sky-shift:0px}
+.hero::after{content:"";position:absolute;inset:-14px;background:#4f5978 url('rooftop.webp') center 54%/cover no-repeat;z-index:-2;transform:translate3d(0,var(--sky-shift),0) scale(1.035);will-change:transform}
+.sky-motes{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.sky-motes i{position:absolute;left:var(--x);top:var(--y);width:var(--size);height:var(--size);border-radius:50%;background:#ffe0b8;box-shadow:0 0 9px 2px #ffcba45c;opacity:0;animation:sky-drift var(--duration) var(--delay) infinite ease-in-out}
+.hero-inner{z-index:1}
+.motion-ready .hero-copy>*{animation:hero-arrive .95s cubic-bezier(.2,.7,.25,1) both}
+.motion-ready .hero-copy> :nth-child(1){animation-delay:.08s}
+.motion-ready .hero-copy> :nth-child(2){animation-delay:.23s}
+.motion-ready .hero-copy> :nth-child(3){animation-delay:.42s}
+.motion-ready .hero-copy> :nth-child(4){animation-delay:.58s}
+@keyframes hero-arrive{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes sky-drift{0%,100%{opacity:0;transform:translate(0,8px)}30%{opacity:.44}65%{opacity:.20}90%{transform:translate(17px,-26px);opacity:0}}
+.motion-ready .reveal-pending{opacity:0;transform:translateY(20px)}
+.motion-ready .reveal-pending.revealed{opacity:1;transform:none;transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.post.card-arrive{animation:card-arrive .46s cubic-bezier(.2,.7,.2,1) both;animation-delay:var(--card-delay,0ms)}
+@keyframes card-arrive{from{opacity:0;translate:0 12px}to{opacity:1;translate:0 0}}
+.post.action-pulse{animation:action-pulse .72s ease both}
+@keyframes action-pulse{0%,100%{box-shadow:0 5px 20px #2d436510}40%{box-shadow:0 0 0 4px #9db9ee70,0 9px 25px #2d436522}}
+.primary,.filter,.actions button,.hero-link{transition:background .2s,color .2s,transform .2s,box-shadow .2s}
+.primary:hover{transform:translateY(-2px);box-shadow:0 6px 15px #281a3626}
+.primary:active,.filter:active,.actions button:active{transform:scale(.97)}
+.hero-link:hover{transform:translateY(-2px)}
+dialog[open]{animation:dialog-enter .28s cubic-bezier(.2,.7,.2,1) both}
+@keyframes dialog-enter{from{opacity:0;transform:translateY(14px) scale(.985)}to{opacity:1;transform:none}}
+.motion-toast{position:fixed;bottom:24px;left:50%;max-width:calc(100% - 32px);width:max-content;z-index:20;pointer-events:none;background:#293f64;color:#fff3e7;border:1px solid #8196bd;padding:12px 22px;border-radius:6px;box-shadow:0 8px 26px #241d3a33;font-size:13px;opacity:0;transform:translate(-50%,12px);transition:opacity .25s,transform .25s}
+.motion-toast.visible{opacity:1;transform:translate(-50%,0)}
+#days{font-variant-numeric:tabular-nums}
+@media(max-width:800px){.hero::after{background-position:62% center}}
+@media(max-width:480px){.hero::after{background-position:66% center}.motion-toast{bottom:16px}}
+@media(prefers-reduced-motion:reduce){.hero::after{transform:none;will-change:auto}.sky-motes{display:none}.motion-ready .hero-copy>*,.post.card-arrive,.post.action-pulse,dialog[open]{animation:none!important}.motion-ready .reveal-pending{opacity:1;transform:none}.motion-toast{transition:none}}
